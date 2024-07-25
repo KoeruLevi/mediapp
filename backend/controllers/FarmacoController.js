@@ -14,7 +14,7 @@ export const getFarmaco = async (req, res) => {
             return res.status(400).json({ message: 'Por favor, proporciona un nombre de farmaco.' });
         }
 
-        const farmacos = await FarmacoModel.findAll({
+        const farmaco = await FarmacoModel.findAll({
             where: {
                 nombre_farmaco: {
                     [Op.like]: `%${nombre}%`
@@ -27,11 +27,11 @@ export const getFarmaco = async (req, res) => {
             ]
         });
 
-        if (farmacos.length === 0) {
+        if (farmaco.length === 0) {
             return res.status(404).json({ message: 'No se encontraron farmacos.' });
         }
 
-        res.json(farmacos);
+        res.json(farmaco);
     } catch (error) {
         console.error('Error al buscar farmacos:', error);
         res.status(500).json({ message: 'Error interno del servidor.' });
@@ -39,9 +39,9 @@ export const getFarmaco = async (req, res) => {
 };
 
 /* Método para mostrar todos los farmacos */
-export const getAllFarmacos = async (req, res) => {
+export const getAllFarmaco = async (req, res) => {
     try {
-        const farmacos = await FarmacoModel.findAll({
+        const farmaco = await FarmacoModel.findAll({
             include: [
                 { model: FarmaciaModel, as: 'farmacia' },
                 { model: LaboratorioModel, as: 'laboratorio' },
@@ -49,11 +49,11 @@ export const getAllFarmacos = async (req, res) => {
             ]
         });
 
-        if (farmacos.length === 0) {
+        if (farmaco.length === 0) {
             return res.status(404).json({ message: 'No se encontraron fármacos.' });
         }
 
-        res.json(farmacos);
+        res.json(farmaco);
     } catch (error) {
         console.error('Error al obtener todos los fármacos:', error);
         res.status(500).json({ message: 'Error interno del servidor.' });

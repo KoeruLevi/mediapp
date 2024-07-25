@@ -6,6 +6,9 @@ import { DataTypes } from "sequelize";
 
 /* Se construye el modelo */
 const LaboratorioModel = db.define('laboratorio', {
+    id_lab: {type: DataTypes.INTEGER,
+        primarykey: true,
+    },
     nombre_lab: {type: DataTypes.STRING},
 })
 
