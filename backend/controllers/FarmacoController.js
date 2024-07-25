@@ -9,6 +9,7 @@ import { Op } from 'sequelize';
 /* Método para buscar farmacos */
 export const getFarmaco = async (req, res) => {
     try {
+    
         const { nombre } = req.query;
         if (!nombre) {
             return res.status(400).json({ message: 'Por favor, proporciona un nombre de farmaco.' });

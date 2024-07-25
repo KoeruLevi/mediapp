@@ -10,17 +10,20 @@ import PrincipioModel from "./PrincipioModel.js";
 /* Se construye el modelo */
 const FarmacoModel = db.define('farmaco', {
     id_farmaco: {type: DataTypes.INTEGER,
-        primarykey: true,
+        primaryKey: true,
     },
     nombre_farmaco: {type: DataTypes.STRING},
-    mg_farmaco: {type: DataTypes.NUMBER},
-    cant_farmaco: {type: DataTypes.NUMBER},
+    mg_farmaco: {type: DataTypes.INTEGER},
+    cant_farmaco: {type: DataTypes.INTEGER},
     precio_farmaco: {type: DataTypes.STRING},
     foto_farmaco: {type: DataTypes.STRING},
+},{
+    tableName: 'farmaco',
+    timestamps: false
 })
 
-FarmacoModel.belongsTo(FarmaciaModel, { as: 'farmacia', foreignKey: 'farmaciaId' });
-FarmacoModel.belongsTo(LaboratorioModel, { as: 'laboratorio', foreignKey: 'laboratorioId' });
-FarmacoModel.belongsTo(PrincipioModel, { as: 'principio', foreignKey: 'principioId' });
+FarmacoModel.belongsTo(FarmaciaModel, { as: 'farmacia', foreignKey: 'id_farmacia' });
+FarmacoModel.belongsTo(LaboratorioModel, { as: 'laboratorio', foreignKey: 'id_lab' });
+FarmacoModel.belongsTo(PrincipioModel, { as: 'principio', foreignKey: 'id_pa' });
 
 export default FarmacoModel

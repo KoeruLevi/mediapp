@@ -17,8 +17,11 @@ export const getAllFarmacia = async (req, res) => {
 /* Mostrar un registro */
 export const getFarmacia = async (req, res) => {
     try{
-        const farmacia = FarmaciaModel.findAll({
-            where:{id:req.params.id}
+
+        console.log(req.params) 
+
+        const farmacia = await FarmaciaModel.findAll({
+            where:{id_farmacia:req.params.id}
         }) 
         res.json(farmacia)
     } catch (error){
