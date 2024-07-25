@@ -1,6 +1,5 @@
-/* Importamos el modelo */
 import { where } from "sequelize";
-import FarmaciaModel from "../models/FarmaciaModel,js";
+import FarmaciaModel from "../models/FarmaciaModel.js";
 
 /* Métodos para el CRUD */
 
