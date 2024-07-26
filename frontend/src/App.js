@@ -1,22 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
-import CompShowFarmacia from './farmacias/ShowFarmacia';
-import CompShowFarmacias from './farmacias/ShowFarmacias';
 
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import './App.css';
+import CompShowFarmacos from './components/CompShowFarmacos';
+import Home from './components/Home';
+import CompShowFarmacia from './components/ShowFarmacia';
+import CompShowFarmacias from './components/ShowFarmacias';
+import { Route, Routes, Link } from 'react-router-dom';
+
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+      <Link to="/" className="App-title-link">
+          <h1 className="App-title">MediPrecio</h1>
+        </Link>
       </header>
-      <BrowserRouter>
         <Routes>
-          <Route path='/' element={<CompShowFarmacias />}/>
-          <Route path='/farmacia/:id' element={<CompShowFarmacia/>} />
+        <Route path='/' element={<Home />} />
+        <Route path='/farmacias' element={<CompShowFarmacias />} />
+        <Route path='/farmacia/:id' element={<CompShowFarmacia />} />
+        <Route path='/buscar' element={<CompShowFarmacos />} /> {/* Ruta para el buscador */}
         </Routes>
-      </BrowserRouter>
     </div>
   );
 }
