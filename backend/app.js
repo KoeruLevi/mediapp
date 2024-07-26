@@ -14,17 +14,14 @@ try {
     await db.authenticate()
     console.log('Conexion exitosa a la BBDD')
 
-   /*  await db.sync({ alter: true})
-    console.log('BBDD y tablas creadas') */
+   
 } catch (error) {
     console.log(`El error de conexión es: ${error}`)
 }
 
 
-app.get('/', (req, res)=>{
-    res.send('Hey nas')
-})
 
-/* app.listen(8000, ()=>{
+
+app.listen(8000, ()=>{
     console.log('Server UP running in http://localhost:8000/')
-}) */
+})
