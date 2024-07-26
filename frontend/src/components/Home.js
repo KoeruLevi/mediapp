@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './Home.css'; // Asegúrate de crear este archivo CSS
+import './Home.css';
 
 const Home = () => {
   return (
@@ -8,6 +8,7 @@ const Home = () => {
       <h1 className="home-title">Bienvenido a MediPrecio</h1>
       <p className="home-subtitle">Tu sitio de confianza para comparar precios de medicamentos.</p>
       <Link to="/buscar" className="btn btn-primary home-button">Buscar Fármacos</Link>
+      <Link to="/farmacias" className="btn btn-secondary home-button">Ver Todas las Farmacias</Link> {/* Nuevo botón */}
     </div>
   );
 };
