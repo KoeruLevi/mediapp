@@ -7,7 +7,7 @@ MediPrecio es una aplicación web diseñada para buscar y comparar precios de me
 Requisitos Previos
 Antes de ejecutar este proyecto, asegúrate de tener instalados los siguientes requisitos:
 
-Descomprimir en su directorio principal C: el repositorio del proyecto que se encuentra en MediPrecio.rar
+
 Node.js y npm: Descargar Node.js
 MySQL: Descargar MySQL
 XAMPP: Descargar XAMPP
@@ -20,6 +20,17 @@ Instalación y Ejecución
 
 Backend
 
+Clona el repositorio:
+
+En git.bash:
+
+git clone https://github.com/KoeruLevi/mediprecio.git
+
+
+
+cd backend
+--
+.
 
 Instala las dependencias:
 
@@ -33,7 +44,7 @@ Configura la base de datos:
 
 Abrir XAMPP y encender el servicio de Apache y el de MySQL
 Abrir admin de MySQL en XAMPP
-Abrir desde phpmyadmin la base de datos que se encuentra en los archivos descomprimidos
+Abrir desde phpmyadmin la base de datos que se encuentra en el repositorio
 Configura las credenciales de la base de datos en backend/database/db.js.
 
 Ejecuta las migraciones:
