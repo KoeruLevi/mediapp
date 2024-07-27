@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import SearchBar from './SearchBar';
-import './CompShowFarmacos.css'; // Asegúrate de crear este archivo CSS
+import './CompShowFarmacos.css'; 
 
 const CompShowFarmacos = () => {
     const [results, setResults] = useState([]);

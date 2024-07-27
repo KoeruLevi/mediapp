@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './SearchBar.css'; // Asegúrate de crear este archivo CSS
+import './SearchBar.css'; 
 
 const SearchBar = ({ setResults }) => {
     const [nombre, setNombre] = useState('');
