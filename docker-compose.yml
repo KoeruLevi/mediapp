@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.7'
 
 services:
   database:
@@ -7,19 +7,28 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: database_ma
-    volumes:
-      - db_data:/var/lib/mysql
-      - ./database_ma.sql:/docker-entrypoint-initdb.d/database_ma.sql
     ports:
       - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - app-network
 
   app:
     build: .
+    command: sh start.sh
+    volumes:
+      - .:/app
     ports:
       - "3000:3000"
       - "8000:8000"
     depends_on:
       - database
+    networks:
+      - app-network
 
 volumes:
   db_data:
+
+networks:
+  app-network:
