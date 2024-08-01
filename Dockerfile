@@ -15,9 +15,13 @@ RUN npm install
 WORKDIR /app/frontend
 RUN npm install
 
+# Copiar el script de inicio
+COPY start.sh /app/start.sh
+RUN chmod +x /app/start.sh
+
 # Exponer puertos
 EXPOSE 8000
 EXPOSE 3000
 
-# Comando para iniciar el backend y el frontend en modo desarrollo
-CMD ["sh", "-c", "cd /app/backend && npm start & cd /app/frontend && npm start"]
+# Comando para iniciar el backend y el frontend
+CMD ["/app/start.sh"]
