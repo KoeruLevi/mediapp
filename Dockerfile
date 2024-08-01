@@ -25,20 +25,15 @@ COPY --from=build /app /app
 WORKDIR /app/backend
 RUN npm install
 
-# Instalar Apache
-RUN apt-get update && apt-get install -y apache2 && rm -rf /var/lib/apt/lists/*
-
-# Copiar archivos construidos del frontend a la carpeta de Apache
-RUN mkdir -p /var/www/html
-COPY --from=build /app/frontend/build /var/www/html
-
-# Configurar Apache
-RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
-RUN sed -i 's!/var/www/html!/var/www/html!' /etc/apache2/sites-available/000-default.conf
-
-# Exponer puertos
-EXPOSE 3000 
+# Exponer puertos para el backend y Apache
 EXPOSE 8000
+EXPOSE 3000
 
-# Comando para iniciar Apache y el backend en modo desarrollo
+# Instalar Apache
+RUN apt-get update && apt-get install -y apache2 && apt-get clean
+
+# Copiar archivos estáticos del frontend a la carpeta de Apache
+RUN cp -r /app/frontend/build/* /var/www/html/
+
+# Iniciar Apache y el backend
 CMD service apache2 start && cd /app/backend && npm start

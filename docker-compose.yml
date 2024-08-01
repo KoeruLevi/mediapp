@@ -11,16 +11,21 @@ services:
     volumes:
       - db_data:/var/lib/mysql
 
+  
+
   app:
     build: .
+    command: sh start.sh
+    volumes:
+      - .:/app
     environment:
       DB_HOST: database
       DB_USER: root
       DB_PASS: password
       DB_NAME: database_ma
     ports:
-      - "3000:3000"
       - "8000:8000"
+      - "3000:3000"
     depends_on:
       - database
 
