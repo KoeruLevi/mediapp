@@ -15,15 +15,9 @@ RUN npm install
 WORKDIR /app/frontend
 RUN npm install
 
-# Construir el frontend
-RUN npm run build
-
-# Instalar el servidor estático de Node.js para servir el frontend
-RUN npm install -g serve
-
-
 # Exponer puertos
-EXPOSE 8000 3000
+EXPOSE 8000
+EXPOSE 3000
 
-# Comando para iniciar el backend y el frontend
-CMD service mysql start && cd /app/backend && npm start & cd /app/frontend && serve -s build
+# Comando para iniciar el backend y el frontend en modo desarrollo
+CMD ["sh", "-c", "cd /app/backend && npm start & cd /app/frontend && npm start"]
