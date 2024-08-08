@@ -1,6 +1,6 @@
 {
     "version": 2,
-    "name": "my-pharmacy-app",
+    "name": "mediprecio",
     "builds": [
       {
         "src": "backend/app.js",
@@ -9,11 +9,11 @@
       {
         "src": "frontend/package.json",
         "use": "@vercel/static-build",
-        "config": { "distDir": "frontend/build" }
+        "config": { "distDir": "build" }
       }
     ],
     "routes": [
-      { "src": "/backend/(.*)", "dest": "/backend/app.js" },
+      { "src": "/api/(.*)", "dest": "/backend/app.js" },
       { "src": "/(.*)", "dest": "/frontend/$1" }
     ],
     "env": {
